@@ -1,7 +1,7 @@
 import time
 from here_location_services import LS
 import csv
-from config import API_KEYS, HEADERS, CITY, CLOCK
+from config import API_KEYS, HEADERS, CITY, CLOCK, PATH_IN_FILE, PATH_OUT_FILE
 
 headers = HEADERS
 clock = CLOCK
@@ -37,7 +37,7 @@ def free_geocode(list_api_key, search_address):
                 return free_geocode(list_api_key, search_address)
 
 
-with open('32k_gis.csv', mode='r') as file, open('test1.csv', mode='a', newline='') as file1:
+with open(PATH_IN_FILE, mode='r') as file, open(PATH_OUT_FILE, mode='a', newline='') as file1:
     csvFile = csv.reader(file)
     write = csv.DictWriter(file1, fieldnames=headers)
     for lines in csvFile:
